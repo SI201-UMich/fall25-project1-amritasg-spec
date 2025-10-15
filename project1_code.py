@@ -49,3 +49,25 @@ def max_bill_length(penguins, averages):
 def max_flipper_length(penguins, averages):
   max_species = max(averages, key=averages.get)
   return [max_species, averages[max_species]]
+
+def generate_report(averages, max_length):
+  with open("penguin_report.txt", "w") as f:
+    f.write("Penguin Report\n")
+    f.write("Average Bill Length by Species:\n")
+    for species, avg in averages.items():
+      f.write(f"{species}: {avg}\n")
+    f.write("\n")
+    f.write(f"The species with the longest bill is {max_length[0]} with a length of {max_length[1]}.\n")
+
+
+def main():
+    penguins = load_penguin('penguins.csv')
+    bill_avg = avg_bill_length(penguins)
+    flipper_avg = avg_flipper_length(penguins)
+
+    averages = {'bill': bill_avg, 'flipper': flipper_avg}
+    max_length = {'bill': max_bill_length(penguins, bill_avg),
+                  'flipper': max_flipper_length(penguins, flipper_avg)}
+
+    generate_report(averages, max_length)
+if __name__ == "__main__":
