@@ -19,3 +19,6 @@ def load_penguin(csv_file):
     for row in reader:
       penguins.append(row)
   return penguins
+
+def get_length(penguins, species):
+  return [penguin['bill_length_mm'] for penguin in penguins if penguin['species'] == species.lower()]
