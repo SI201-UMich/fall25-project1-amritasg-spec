@@ -10,3 +10,12 @@
 # Dataset: Palmer Penguins (Kaggle)
 # -------------------------------------------------------------
 
+import csv
+
+def load_penguin(csv_file):
+  penguins = []
+  with open(csv_file, newline='') as csvfile:
+    reader = csv.DictReader(csvfile)
+    for row in reader:
+      penguins.append(row)
+  return penguins
