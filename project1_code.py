@@ -41,3 +41,11 @@ def avg_flipper_length(penguins):
     lengths = get_length(penguins, species)
     averages[species] = sum(map(float, lengths)) / len(lengths)
   return averages
+
+def max_bill_length(penguins, averages):
+  max_species = max(averages, key=averages.get)
+  return [max_species, averages[max_species]]
+
+def max_flipper_length(penguins, averages):
+  max_species = max(averages, key=averages.get)
+  return [max_species, averages[max_species]]
